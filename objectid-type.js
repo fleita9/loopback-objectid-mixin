@@ -42,9 +42,8 @@ module.exports = (Model, options) => {
             }
             if(ctx.data) {
                 options.properties.map(propertyKey => {
-                    if(!(ctx.data[propertyKey] instanceof objectId)) {
+                    if(ctx.data[propertyKey] && !(ctx.data[propertyKey] instanceof objectId))
                         ctx.data[propertyKey] = new ObjectId(ctx.data[propertyKey]);
-                    }
                 })
                 next();
             }
